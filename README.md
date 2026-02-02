@@ -1,7 +1,6 @@
 # Gif-Engine Community Library
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-success)](https://arknight38.github.io/Gif-Engine-Library/)
-[![Packs](https://img.shields.io/badge/Animation%20Packs-0-blue)](#)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 Community-curated animation packs for [Gif-Engine](https://github.com/Arknight38/Gif-Engine).
