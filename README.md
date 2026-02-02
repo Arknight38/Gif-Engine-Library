@@ -339,3 +339,206 @@ The repository structure and code are licensed under MIT License.
 Maintained by [Arknight38](https://github.com/Arknight38) and the Gif-Engine community.
 
 Special thanks to all pack contributors.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+There's no direct way to change GIF framerate in HTML since the framerate is embedded in the GIF file itself. However, here are your options:
+
+## Option 1: CSS Animation (Fake Slowdown/Speedup)
+
+You can't change the actual GIF speed, but you can make it appear slower/faster by playing with visibility:
+
+```html
+<style>
+/* Slow down by showing each frame longer */
+@keyframes slowGif {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.slow-gif {
+  animation: slowGif 2s steps(1) infinite;
+}
+
+/* Speed up using faster CSS animation */
+.fast-gif {
+  animation: spin 0.5s linear infinite;
+}
+</style>
+
+<img src="animation.gif" class="slow-gif">
+```
+
+**Problem:** This doesn't actually change the GIF framerate, just adds effects.
+
+---
+
+## Option 2: Canvas Method (Actual Control)
+
+Extract frames and redraw at your desired framerate:
+
+```html
+<canvas id="gifCanvas"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/gifler@0.1.0/gifler.min.js"></script>
+<script>
+const canvas = document.getElementById('gifCanvas');
+const ctx = canvas.getContext('2d');
+
+let targetFPS = 15; // Change this to control speed
+let frameDelay = 1000 / targetFPS;
+
+gifler('animation.gif').frames(canvas, (ctx, frame) => {
+  ctx.drawImage(frame.buffer, 0, 0);
+}, frameDelay); // Custom frame delay in milliseconds
+</script>
+```
+
+---
+
+## Option 3: Use gifuct-js Library (More Control)
+
+```html
+<canvas id="canvas"></canvas>
+
+<script type="module">
+import { parseGIF, decompressFrames } from 'https://cdn.skypack.dev/gifuct-js';
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// Fetch and parse GIF
+const response = await fetch('animation.gif');
+const buffer = await response.arrayBuffer();
+const gif = parseGIF(buffer);
+const frames = decompressFrames(gif, true);
+
+let frameIndex = 0;
+let customFPS = 20; // Your desired FPS
+let frameDelay = 1000 / customFPS;
+
+// Set canvas size
+canvas.width = frames[0].dims.width;
+canvas.height = frames[0].dims.height;
+
+function drawFrame() {
+  const frame = frames[frameIndex];
+  const imageData = ctx.createImageData(frame.dims.width, frame.dims.height);
+  imageData.data.set(frame.patch);
+  ctx.putImageData(imageData, frame.dims.left, frame.dims.top);
+  
+  frameIndex = (frameIndex + 1) % frames.length;
+  setTimeout(drawFrame, frameDelay);
+}
+
+drawFrame();
+</script>
+```
+
+---
+
+## Option 4: Server-Side Re-encode (Best Quality)
+
+Use a tool to actually re-encode the GIF at a different framerate:
+
+```bash
+# Using ffmpeg
+ffmpeg -i input.gif -r 15 output.gif
+
+# Using gifsicle
+gifsicle --delay=10 input.gif > output.gif  # 10 = 100ms per frame (10 FPS)
+```
+
+Then use the re-encoded GIF in HTML normally:
+```html
+<img src="output.gif">
+```
+
+---
+
+## Option 5: JavaScript with gif.js (Generate New GIF)
+
+Actually create a new GIF at runtime with custom framerate:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/gif.js@0.2.0/dist/gif.js"></script>
+<script>
+// Parse existing GIF frames
+// Re-encode with new timing using gif.js
+// This is complex and not recommended for real-time use
+</script>
+```
+
+---
+
+## Recommended Approach for Gif-Engine Library
+
+For your `index.html` gallery, I'd recommend:
+
+**Option 2 (Canvas with gifler)** - Simple and works well for preview purposes:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .gif-preview {
+      width: 300px;
+      height: 200px;
+      object-fit: contain;
+    }
+    
+    /* Fallback for browsers without canvas support */
+    .gif-preview-img {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="pack-card">
+    <canvas class="gif-preview" data-gif-src="pack/preview.gif" data-fps="15"></canvas>
+    <!-- Fallback -->
+    <img class="gif-preview-img" src="pack/preview.gif" alt="Preview">
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gifler@0.1.0/gifler.min.js"></script>
+  <script>
+    document.querySelectorAll('.gif-preview').forEach(canvas => {
+      const gifSrc = canvas.dataset.gifSrc;
+      const fps = parseInt(canvas.dataset.fps) || 30;
+      const frameDelay = 1000 / fps;
+      
+      gifler(gifSrc)
+        .frames(canvas, (ctx, frame) => {
+          ctx.drawImage(frame.buffer, 0, 0);
+        }, frameDelay);
+    });
+  </script>
+</body>
+</html>
+```
+
+**For production:** Just re-encode the GIFs at the desired framerate server-side (Option 4) - it's cleaner and more efficient.
+
+Which approach are you looking to use this for?

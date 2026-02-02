@@ -1,0 +1,18 @@
+{
+  "id": "tachyon",
+  "name": "Tachyon",
+  "author": "Arknight",
+  "version": "1.0.0",
+  "animations": [
+    {
+      "filename": "Tachyon.apng",
+      "url": "animations/Tachyon.apng",
+      "display_name": "Tachyon",
+      "default_settings": {
+        "fps": 22,
+        "alignment": "center",
+        "always_on_top": true
+      }
+    }
+  ]
+}

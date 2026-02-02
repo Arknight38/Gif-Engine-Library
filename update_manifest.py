@@ -37,6 +37,8 @@ def update_manifest():
                         
                         # Infer preview URL (try preview.gif, then first animation)
                         preview_url = ""
+                        preview_fps = None
+                        
                         preview_path_local = os.path.join(pack_path, "preview.gif")
                         if os.path.exists(preview_path_local):
                             preview_url = f"{BASE_URL}/packs/{pack_id}/preview.gif"
@@ -46,6 +48,9 @@ def update_manifest():
                             anim_url = first_anim.get("url", "")
                             if anim_url:
                                 preview_url = f"{BASE_URL}/packs/{pack_id}/{anim_url}"
+                                # Extract FPS if available
+                                if "default_settings" in first_anim:
+                                    preview_fps = first_anim["default_settings"].get("fps")
                         
                         meta = {
                             "id": pack_data.get("id", pack_id),
@@ -55,6 +60,7 @@ def update_manifest():
                             "version": pack_data.get("version", "1.0.0"),
                             "tags": pack_data.get("tags", []),
                             "preview_url": preview_url,
+                            "preview_fps": preview_fps,
                             "pack_url": f"{BASE_URL}/packs/{pack_id}/pack.json",
                             "animation_count": len(pack_data.get("animations", [])),
                             "file_size_mb": 0.0 # Placeholder

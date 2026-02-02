@@ -42,7 +42,16 @@ function render(packs) {
     const card = document.createElement("div");
     card.className = "pack-card";
 
-    const preview = pack.preview_url ? `<img src="${pack.preview_url}" alt="${pack.name}" class="pack-preview" />` : `<div class="pack-preview"></div>`;
+    let preview = `<div class="pack-preview"></div>`;
+    if (pack.preview_url) {
+      const isGif = pack.preview_url.toLowerCase().endsWith(".gif");
+      if (isGif && pack.preview_fps) {
+        preview = `<canvas class="pack-preview gif-canvas" data-src="${pack.preview_url}" data-fps="${pack.preview_fps}"></canvas>`;
+      } else {
+        preview = `<img src="${pack.preview_url}" alt="${pack.name}" class="pack-preview" />`;
+      }
+    }
+
     const tags = (pack.tags || []).map(tag => `<span class="tag">${tag}</span>`).join("");
     const meta = [
       pack.version ? `v${pack.version}` : null,
@@ -68,6 +77,26 @@ function render(packs) {
     });
 
     container.appendChild(card);
+
+    // Initialize gifler for this card if applicable
+    const canvas = card.querySelector(".gif-canvas");
+    if (canvas && window.gifler) {
+      const fps = parseFloat(canvas.dataset.fps);
+      const url = canvas.dataset.src;
+      // Convert FPS to milliseconds delay
+      const delay = 1000 / fps;
+      
+      gifler(url).frames(canvas, (ctx, frame) => {
+        // Stop drawing if canvas is no longer in DOM
+        if (!document.body.contains(canvas)) return;
+
+        if (canvas.width !== frame.width) {
+          canvas.width = frame.width;
+          canvas.height = frame.height;
+        }
+        ctx.drawImage(frame.buffer, 0, 0);
+      }, delay);
+    }
   });
 }
 

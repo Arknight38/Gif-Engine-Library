@@ -1,0 +1,18 @@
+{
+  "id": "tetodance",
+  "name": "tetoDance",
+  "author": "Arknight",
+  "version": "1.0.0",
+  "animations": [
+    {
+      "filename": "tetoDance.apng",
+      "url": "animations/tetoDance.apng",
+      "display_name": "tetoDance",
+      "default_settings": {
+        "fps": 20,
+        "alignment": "center",
+        "always_on_top": true
+      }
+    }
+  ]
+}
