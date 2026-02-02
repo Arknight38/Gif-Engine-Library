@@ -4,15 +4,15 @@
   "last_updated": "2026-02-02",
   "packs": [
     {
-      "id": "lappy",
-      "name": "lappy",
+      "id": "tetodance",
+      "name": "tetoDance",
       "author": "Arknight",
-      "description": "Pack lappy",
+      "description": "Pack tetodance",
       "version": "1.0.0",
       "tags": [],
-      "preview_url": "https://arknight38.github.io/Gif-Engine-Library/packs/lappy/animations/lappy.apng",
-      "preview_fps": null,
-      "pack_url": "https://arknight38.github.io/Gif-Engine-Library/packs/lappy/pack.json",
+      "preview_url": "https://arknight38.github.io/Gif-Engine-Library/packs/tetodance/animations/tetoDance.apng",
+      "preview_fps": 20,
+      "pack_url": "https://arknight38.github.io/Gif-Engine-Library/packs/tetodance/pack.json",
       "animation_count": 1,
       "file_size_mb": 0.0
     },
@@ -30,6 +30,19 @@
       "file_size_mb": 0.0
     },
     {
+      "id": "lappy",
+      "name": "lappy",
+      "author": "Arknight",
+      "description": "Pack lappy",
+      "version": "1.0.0",
+      "tags": [],
+      "preview_url": "https://arknight38.github.io/Gif-Engine-Library/packs/lappy/animations/lappy.apng",
+      "preview_fps": null,
+      "pack_url": "https://arknight38.github.io/Gif-Engine-Library/packs/lappy/pack.json",
+      "animation_count": 1,
+      "file_size_mb": 0.0
+    },
+    {
       "id": "tachyon",
       "name": "Tachyon",
       "author": "Arknight",
@@ -39,19 +52,6 @@
       "preview_url": "https://arknight38.github.io/Gif-Engine-Library/packs/tachyon/animations/Tachyon.apng",
       "preview_fps": 22,
       "pack_url": "https://arknight38.github.io/Gif-Engine-Library/packs/tachyon/pack.json",
-      "animation_count": 1,
-      "file_size_mb": 0.0
-    },
-    {
-      "id": "tetodance",
-      "name": "tetoDance",
-      "author": "Arknight",
-      "description": "Pack tetodance",
-      "version": "1.0.0",
-      "tags": [],
-      "preview_url": "https://arknight38.github.io/Gif-Engine-Library/packs/tetodance/animations/tetoDance.apng",
-      "preview_fps": 20,
-      "pack_url": "https://arknight38.github.io/Gif-Engine-Library/packs/tetodance/pack.json",
       "animation_count": 1,
       "file_size_mb": 0.0
     }
