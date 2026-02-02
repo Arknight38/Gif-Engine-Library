@@ -1,0 +1,19 @@
+{
+  "id": "rainbow-pls-bttv",
+  "name": "rainbow-pls-bttv",
+  "author": "Arknight",
+  "version": "1.0.0",
+  "animations": [
+    {
+      "filename": "rainbow-pls-bttv.gif",
+      "url": "animations/rainbow-pls-bttv.gif",
+      "display_name": "rainbow-pls-bttv",
+      "default_settings": {
+        "scale": 0.9,
+        "fps": 10,
+        "alignment": "center",
+        "always_on_top": true
+      }
+    }
+  ]
+}
