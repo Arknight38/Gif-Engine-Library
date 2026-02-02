@@ -42,7 +42,7 @@ function render(packs) {
     const card = document.createElement("div");
     card.className = "pack-card";
 
-    const preview = pack.preview_url ? `<canvas class="pack-preview" data-preview-url="${pack.preview_url}"></canvas>` : `<div class="pack-preview"></div>`;
+    const preview = pack.preview_url ? `<img src="${pack.preview_url}" alt="${pack.name}" class="pack-preview" />` : `<div class="pack-preview"></div>`;
     const tags = (pack.tags || []).map(tag => `<span class="tag">${tag}</span>`).join("");
     const meta = [
       pack.version ? `v${pack.version}` : null,
@@ -63,19 +63,6 @@ function render(packs) {
       <button class="download-btn">Open pack.json</button>
     `;
 
-    // Load pack details to get fps settings
-    if (pack.pack_url) {
-      const packDetails = await loadPackDetails(pack.pack_url);
-      if (packDetails && packDetails.animations && packDetails.animations.length > 0) {
-        const canvas = card.querySelector(".pack-preview");
-        if (canvas) {
-          const animations = packDetails.animations;
-          const fps = animations[0]?.default_settings?.fps || 10;
-          setupCanvasAnimation(canvas, animations.map(a => a.url), fps);
-        }
-      }
-    }
-
     card.querySelector(".download-btn").addEventListener("click", () => {
       if (pack.pack_url) window.open(pack.pack_url, "_blank");
     });
@@ -84,71 +71,6 @@ function render(packs) {
   });
 }
 
-function setupCanvasAnimation(canvas, urls, fps) {
-  canvas.width = 200;
-  canvas.height = 200;
-  const ctx = canvas.getContext("2d");
-  let currentIndex = 0;
-  let frameTime = 1000 / fps;
-  let lastFrameTime = 0;
-  let images = [];
-  let imagesLoaded = 0;
-
-  // Load all images
-  urls.forEach((url, idx) => {
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.onload = () => {
-      images[idx] = img;
-      imagesLoaded++;
-      if (imagesLoaded === urls.length) {
-        startAnimation();
-      }
-    };
-    img.onerror = () => {
-      imagesLoaded++;
-      if (imagesLoaded === urls.length) {
-        startAnimation();
-      }
-    };
-    img.src = url;
-  });
-
-  function startAnimation() {
-    function animate(timestamp) {
-      if (timestamp - lastFrameTime >= frameTime) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        if (images[currentIndex]) {
-          const img = images[currentIndex];
-          const aspectRatio = img.width / img.height;
-          let drawWidth = canvas.width;
-          let drawHeight = canvas.height;
-          if (aspectRatio > 1) {
-            drawHeight = canvas.width / aspectRatio;
-          } else {
-            drawWidth = canvas.height * aspectRatio;
-          }
-          const x = (canvas.width - drawWidth) / 2;
-          const y = (canvas.height - drawHeight) / 2;
-          ctx.drawImage(img, x, y, drawWidth, drawHeight);
-        }
-        currentIndex = (currentIndex + 1) % images.length;
-        lastFrameTime = timestamp;
-      }
-      requestAnimationFrame(animate);
-    }
-    requestAnimationFrame(animate);
-  }
-
-  // Click to cycle through animations
-  if (urls.length > 1) {
-    canvas.style.cursor = "pointer";
-    canvas.addEventListener("click", (e) => {
-      e.stopPropagation();
-      currentIndex = (currentIndex + 1) % images.length;
-    });
-  }
-}
 
 async function loadManifest() {
   try {
