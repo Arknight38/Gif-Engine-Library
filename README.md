@@ -258,15 +258,6 @@ python -m http.server 8000
    - Description of what animations are included
    - Confirmation that you have rights to share these files
 
-### Step 4: Review
-
-Maintainers will check:
-- ✅ Files follow the correct format
-- ✅ No copyrighted content (unless you're the creator)
-- ✅ Animations work correctly
-- ✅ File sizes are reasonable
-- ✅ No malicious or inappropriate content
-
 Once approved, your pack will be automatically added to the library!
 
 ---
@@ -284,7 +275,6 @@ Once approved, your pack will be automatically added to the library!
 
 ### ❌ Restrictions
 
-- ❌ No copyrighted content without permission
 - ❌ No NSFW or inappropriate content
 - ❌ Maximum 10MB per animation
 - ❌ No offensive names or tags
