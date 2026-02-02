@@ -1,49 +1,31 @@
 {
   "version": "1.0",
+  "icons": [],
   "last_updated": "2026-02-02",
   "packs": [
-    {
-      "id": "rainbow-pls-bttv",
-      "name": "rainbow-pls-bttv",
-      "author": "Arknight",
-      "version": "1.0.0",
-      "animations": [
-        {
-          "filename": "rainbow-pls-bttv.gif",
-          "url": "animations/rainbow-pls-bttv.gif",
-          "display_name": "rainbow-pls-bttv",
-          "default_settings": {
-            "scale": 0.9,
-            "fps": 10,
-            "alignment": "center",
-            "always_on_top": true
-          }
-        }
-      ]
-    },
     {
       "id": "lappy",
       "name": "lappy",
       "author": "Arknight",
+      "description": "Pack lappy",
       "version": "1.0.0",
-      "animations": [
-        {
-          "filename": "lappy.apng",
-          "url": "animations/lappy.apng",
-          "display_name": "lappy",
-          "default_settings": {
-            "alignment": "center",
-            "always_on_top": true
-          }
-        }
-      ]
-    }
-  ],
-  "icons": [
+      "tags": [],
+      "preview_url": "https://arknight38.github.io/Gif-Engine-Library/packs/lappy/animations/lappy.apng",
+      "pack_url": "https://arknight38.github.io/Gif-Engine-Library/packs/lappy/pack.json",
+      "animation_count": 1,
+      "file_size_mb": 0.0
+    },
     {
-      "src": "icon.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "id": "rainbow-pls-bttv",
+      "name": "rainbow-pls-bttv",
+      "author": "Arknight",
+      "description": "Pack rainbow-pls-bttv",
+      "version": "1.0.0",
+      "tags": [],
+      "preview_url": "https://arknight38.github.io/Gif-Engine-Library/packs/rainbow-pls-bttv/animations/rainbow-pls-bttv.gif",
+      "pack_url": "https://arknight38.github.io/Gif-Engine-Library/packs/rainbow-pls-bttv/pack.json",
+      "animation_count": 1,
+      "file_size_mb": 0.0
     }
   ]
 }
