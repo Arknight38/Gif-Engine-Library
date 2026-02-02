@@ -3,23 +3,6 @@
   "last_updated": "2026-02-02",
   "packs": [
     {
-      "id": "lappy",
-      "name": "lappy",
-      "author": "Arknight",
-      "version": "1.0.0",
-      "animations": [
-        {
-          "filename": "lappy.apng",
-          "url": "animations/lappy.apng",
-          "display_name": "lappy",
-          "default_settings": {
-            "alignment": "center",
-            "always_on_top": true
-          }
-        }
-      ]
-    },
-    {
       "id": "rainbow-pls-bttv",
       "name": "rainbow-pls-bttv",
       "author": "Arknight",
@@ -32,6 +15,23 @@
           "default_settings": {
             "scale": 0.9,
             "fps": 10,
+            "alignment": "center",
+            "always_on_top": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "lappy",
+      "name": "lappy",
+      "author": "Arknight",
+      "version": "1.0.0",
+      "animations": [
+        {
+          "filename": "lappy.apng",
+          "url": "animations/lappy.apng",
+          "display_name": "lappy",
+          "default_settings": {
             "alignment": "center",
             "always_on_top": true
           }
