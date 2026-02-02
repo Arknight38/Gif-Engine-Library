@@ -1,0 +1,19 @@
+{
+  "id": "mikupopintapng",
+  "name": "mikupopint.apng",
+  "author": "Arknight",
+  "version": "1.0.0",
+  "animations": [
+    {
+      "filename": "mikupopint.apng.apng",
+      "url": "animations/mikupopint.apng.apng",
+      "display_name": "mikupopint.apng",
+      "default_settings": {
+        "scale": 0.55,
+        "fps": 10,
+        "alignment": "center",
+        "always_on_top": true
+      }
+    }
+  ]
+}

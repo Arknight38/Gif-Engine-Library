@@ -1,0 +1,18 @@
+{
+  "id": "cryst_miu---1966854789779906659",
+  "name": "Cryst_Miu - 1966854789779906659",
+  "author": "Arknight",
+  "version": "1.0.0",
+  "animations": [
+    {
+      "filename": "Cryst_Miu - 1966854789779906659.gif",
+      "url": "animations/Cryst_Miu - 1966854789779906659.gif",
+      "display_name": "Cryst_Miu - 1966854789779906659",
+      "default_settings": {
+        "scale": 0.45,
+        "alignment": "center",
+        "always_on_top": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "tetoakage",
+  "name": "tetoakage",
+  "author": "Arknight",
+  "version": "1.0.0",
+  "animations": [
+    {
+      "filename": "tetoakage.apng",
+      "url": "animations/tetoakage.apng",
+      "display_name": "tetoakage",
+      "default_settings": {
+        "scale": 0.55,
+        "fps": 43,
+        "alignment": "center",
+        "always_on_top": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "juufuutei-raden-guru-guru",
+  "name": "Juufuutei Raden guru guru",
+  "author": "Arknight",
+  "version": "1.0.0",
+  "animations": [
+    {
+      "filename": "Juufuutei Raden guru guru.gif",
+      "url": "animations/Juufuutei Raden guru guru.gif",
+      "display_name": "Juufuutei Raden guru guru",
+      "default_settings": {
+        "scale": 0.55,
+        "alignment": "center",
+        "always_on_top": true
+      }
+    }
+  ]
+}

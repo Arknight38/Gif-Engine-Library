@@ -1,0 +1,17 @@
+{
+  "id": "don-limbus-final",
+  "name": "Don limbus Final",
+  "author": "Arknight",
+  "version": "1.0.0",
+  "animations": [
+    {
+      "filename": "Don limbus Final.gif",
+      "url": "animations/Don limbus Final.gif",
+      "display_name": "Don limbus Final",
+      "default_settings": {
+        "alignment": "center",
+        "always_on_top": true
+      }
+    }
+  ]
+}
