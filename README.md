@@ -24,7 +24,7 @@ In GitHub:
 - Folder: `/ (root)`
 
 Your site will be available at:
-`https://<username>.github.io/<repo>/`
+`https://arknight38.github.io/gif-engine-library`
 
 ## Manifest format (`manifest.json`)
 
