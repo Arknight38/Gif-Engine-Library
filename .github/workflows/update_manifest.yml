@@ -1,0 +1,48 @@
+name: Update Manifest
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packs/**'
+      - 'update_manifest.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-manifest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run update script
+        run: |
+          python update_manifest.py
+
+      - name: Check for changes
+        id: git_status
+        run: |
+          if [ -n "$(git status --porcelain manifest.json)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.git_status.outputs.changed == 'true'
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add manifest.json
+          git commit -m "Auto-update manifest.json [skip ci]"
+          git push

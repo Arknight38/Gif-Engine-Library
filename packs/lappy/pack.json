@@ -1,0 +1,17 @@
+{
+  "id": "lappy",
+  "name": "lappy",
+  "author": "Arknight",
+  "version": "1.0.0",
+  "animations": [
+    {
+      "filename": "lappy.apng",
+      "url": "animations/lappy.apng",
+      "display_name": "lappy",
+      "default_settings": {
+        "alignment": "center",
+        "always_on_top": true
+      }
+    }
+  ]
+}
